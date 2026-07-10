@@ -1,0 +1,15 @@
+name: Harmony Tick
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Übungs-Erinnerungs-Tick senden
+        run: |
+          curl -fsS -m 25 -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" "https://henri-harmony-guitar.vercel.app/api/tick"
+
+# Hinweis: Datei-Aenderung registriert den Zeitplan beim GitHub-Scheduler neu
